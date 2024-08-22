@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/firebase_options.dart';
-import 'package:ecommerceapp/view/home_screen.dart';
 import 'package:ecommerceapp/view/sign_up_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

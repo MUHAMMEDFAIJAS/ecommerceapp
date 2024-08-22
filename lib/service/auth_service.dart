@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceapp/model/auth_model.dart';
-import 'package:ecommerceapp/view/home_screen.dart';
+import 'package:ecommerceapp/view/bottom_bar.dart';
 import 'package:ecommerceapp/view/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class AuthService {
     }
     log('sign in success');
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => HomeScreen(),
+      builder: (context) => BottomBar(),
     ));
   }
 }

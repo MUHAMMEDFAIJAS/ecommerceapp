@@ -31,4 +31,9 @@ class ProductService {
   Future<void> addproduct(ProductModel model) async {
     await postimgref.add(model);
   }
+
+   Stream<List<ProductModel>> getProducts() {
+    return postimgref.snapshots().map((snapshot) =>
+        snapshot.docs.map((doc) => doc.data()).toList());
+  }
 }

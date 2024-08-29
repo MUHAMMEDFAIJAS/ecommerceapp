@@ -1,7 +1,7 @@
 import 'package:ecommerceapp/view/cart_screen.dart';
 import 'package:ecommerceapp/view/home_screen.dart';
+import 'package:ecommerceapp/view/products_screen.dart';
 import 'package:ecommerceapp/view/profile_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatefulWidget {
@@ -13,10 +13,11 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int currentindex = 0;
-  List screens = [
-    const HomeScreen(),
-    const CartScreen(),
-    ProfileScreen( ),
+  List screens = const [
+    HomeScreen(),
+    ProductsScreen(),
+    CartScreen(),
+    ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,8 @@ class _BottomBarState extends State<BottomBar> {
           backgroundColor: Color(0xFBc2b280),
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.local_offer), label: 'my products'),
             BottomNavigationBarItem(icon: Icon(Icons.store), label: 'cart'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile'),
           ]),

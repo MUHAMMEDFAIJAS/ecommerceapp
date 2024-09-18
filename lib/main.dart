@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/firebase_options.dart';
+import 'package:ecommerceapp/view/auth_page.dart';
 import 'package:ecommerceapp/view/sign_up_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MyApp());
 }
 
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: SignUpScreen(),
+      debugShowCheckedModeBanner: false,
+      home: AuthPage(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/model/auth_model.dart';
+import 'package:ecommerceapp/service/auth_service.dart';
 import 'package:ecommerceapp/service/user_service.dart';
 import 'package:ecommerceapp/view/admin/admin_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -51,7 +52,9 @@ class ProfileScreen extends StatelessWidget {
           ),
           ListTile(
             title: Text('logout'),
-            onTap: () {},
+            onTap: () {
+              AuthService().logoutAuth(context);
+            },
           ),
         ],
       ),

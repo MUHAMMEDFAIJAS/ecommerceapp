@@ -20,6 +20,15 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
   final ImagePicker picker = ImagePicker();
   bool isLoading = false;
 
+  // String? selectedcategory;
+  String? selectedcategory = 'Electronics';
+  var categories = [
+    'Electronics',
+    'fashion',
+    'Home appliances',
+    'sports',
+  ];
+
   Future<void> pickImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
@@ -42,7 +51,8 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
 
     if (productnameController.text.trim().isEmpty ||
         productdescriptionController.text.trim().isEmpty ||
-        productpriceController.text.trim().isEmpty) {
+        productpriceController.text.trim().isEmpty ||
+        selectedcategory == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('All fields are required')),
       );
@@ -57,11 +67,11 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
       String imageUrl = await ProductService().addproductimage(image!);
 
       ProductModel newProduct = ProductModel(
-        prodname: productnameController.text.trim(),
-        prodescription: productdescriptionController.text.trim(),
-        proprice: int.tryParse(productpriceController.text.trim()),
-        proimage: imageUrl,
-      );
+          prodname: productnameController.text.trim(),
+          prodescription: productdescriptionController.text.trim(),
+          proprice: int.tryParse(productpriceController.text.trim()),
+          proimage: imageUrl,
+          category: selectedcategory);
 
       await ProductService().addproduct(newProduct);
 
@@ -75,6 +85,7 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
       productpriceController.clear();
       setState(() {
         image = null;
+        selectedcategory = 'Electronics';
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -136,6 +147,21 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                 ),
               ),
               keyboardType: TextInputType.number,
+            ),
+            SizedBox(height: 16),
+            DropdownButton<String>(
+              value: selectedcategory,
+              onChanged: (String? newvalue) {
+                setState(() {
+                  selectedcategory = newvalue;
+                });
+              },
+              items: categories.map((String category) {
+                return DropdownMenuItem(
+                  value: category,
+                  child: Text(category),
+                );
+              }).toList(),
             ),
             SizedBox(height: 16),
             isLoading

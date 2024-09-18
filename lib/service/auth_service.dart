@@ -50,4 +50,11 @@ class AuthService {
       builder: (context) => BottomBar(),
     ));
   }
+
+  Future<void> logoutAuth(BuildContext context) async {
+    await fireauth.signOut();
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => LoginScreen(),
+    ));
+  }
 }

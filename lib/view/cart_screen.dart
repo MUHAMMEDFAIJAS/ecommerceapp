@@ -5,14 +5,12 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'cart',
-            style: TextStyle(fontSize: 20),
-          ),
+          
         ],
       ),
     );
